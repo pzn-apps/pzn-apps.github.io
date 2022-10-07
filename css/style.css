@@ -1,0 +1,106 @@
+html {
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+
+header {
+    display: flex;
+    max-width: 1400px;
+    justify-content: space-between;
+    margin: 20px auto 0;
+    align-items: center;
+}
+
+.directory-path {
+    display: flex;
+    color: black;
+    width: 300px;
+    border-left: 1px white solid;
+    border-right: 1px white solid;
+    background-color: white;
+    gap: 20px;
+    flex-direction: column;
+    text-align: center;
+    border-radius: 10px;
+    height: 85px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+
+}
+
+.project {
+    display: flex;
+    width: 50%;
+    align-items: center;
+    gap: 20px;
+}
+
+.project-header {
+    background-color: white;
+    color: black;
+    padding: 5px;
+    display: flex;
+    border: 1px white solid;
+    border-radius: 10px;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.project-header:hover {
+    transform: scale(1.09);
+    cursor: pointer;
+}
+
+.search-header {
+    width: 300px;
+
+}
+
+.project img {
+    height: 50px;
+    width: 50px;
+}
+
+/* content section */
+.content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+
+}
+
+.left-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    width: 300px;
+    min-height: 80vh;
+    border-left: 1px white solid;
+    border-right: 1px white solid;
+}
+
+.left-content-subfolder {
+    padding-top: 10px;
+    width: 80%;
+    color: white;
+    font-size: 17px;
+}
+
+.left-content-subfolder:hover {
+    cursor: pointer;
+    color: rgb(202, 198, 198);
+}
+
+#myVideo {
+    z-index: -1;
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+}

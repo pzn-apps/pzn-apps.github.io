@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Mockup</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&family=Work+Sans:wght@100&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <video autoplay loop muted id="myVideo" class="video" preload="true" playsinline="">
+        <source src="https://sulmara.com/wp-content/themes/sulmara_theme/assets/video/bg.mp4" type="video/mp4">
+    </video>
+    <header>
+        <div class="directory-path">
+            <h2>PROJECT NAME</h2>
+        </div>
+        <div class="project">
+            <div class="project-header">
+
+                <img src="./img/data.png">
+                <p class="project-name">Data Analysis Projects</p>
+            </div>
+            <div class="project-header">
+                <img src="./img/intellegence.png">
+                <p class="project-name">Intelligent Information Management</p>
+            </div>
+            <div class="project-header">
+                <img src="./img/bridge.png">
+                <p class="project-name">Integration and Data Bridging</p>
+            </div>
+        </div>
+        <div class="search-header">
+            <input type="text" placeholder="Search..." class="search-input">
+        </div>
+        <div class="lang-header">
+            <p class="lang-choose">EN/RU</p>
+        </div>
+
+    </header>
+    <div class="content">
+        <div class="left-content">
+
+        </div>
+        <div class="right-content">
+
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+    <script type="module">
+        const content = document.getElementById('content');
+        import { Octokit } from "https://cdn.skypack.dev/@octokit/rest";
+        const octokit = new Octokit({
+            auth: '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'
+        })
+        async function getReadme() {
+            const response = await octokit.request('GET /repos/vrotex/etherJs.github.io/readme', {
+
+                owner: 'OWNER',
+                repo: 'REPO'
+
+            })
+
+            // let a = atob(response.data.content);
+            // content.innerHTML = a;]
+            console.log(response)
+        }
+        getReadme()
+        async function getSpecifiedMdFile() {
+            const repository = await octokit.request('GET /repos/vrotex/etherJs.github.io/contents/test.md', {
+                owner: 'OWNER',
+                repo: 'REPO',
+                path: 'PATH'
+            })
+            console.log(repository)
+        }
+        getSpecifiedMdFile()
+
+    </script>
+</body>
+
+</html>
