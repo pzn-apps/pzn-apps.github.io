@@ -12,11 +12,12 @@
         rel="stylesheet">
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/style.css">
+
 </head>
 
 <body>
     <video autoplay loop muted id="myVideo" class="video" preload="true" playsinline="">
-        <source src="https://sulmara.com/wp-content/themes/sulmara_theme/assets/video/bg.mp4" type="video/mp4">
+        <source src="./img/backgroundVideo.mp4" type="video/mp4">
     </video>
     <header>
         <div class="directory-path">
@@ -50,41 +51,13 @@
 
         </div>
         <div class="right-content">
-
+            <p id="main-description"></p>
         </div>
     </div>
 
-    <script src="./script.js"></script>
-    <script type="module">
-        const content = document.getElementById('content');
-        import { Octokit } from "https://cdn.skypack.dev/@octokit/rest";
-        const octokit = new Octokit({
-            auth: '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'
-        })
-        async function getReadme() {
-            const response = await octokit.request('GET /repos/vrotex/etherJs.github.io/readme', {
 
-                owner: 'OWNER',
-                repo: 'REPO'
-
-            })
-
-            // let a = atob(response.data.content);
-            // content.innerHTML = a;]
-            console.log(response)
-        }
-        getReadme()
-        async function getSpecifiedMdFile() {
-            const repository = await octokit.request('GET /repos/vrotex/etherJs.github.io/contents/test.md', {
-                owner: 'OWNER',
-                repo: 'REPO',
-                path: 'PATH'
-            })
-            console.log(repository)
-        }
-        getSpecifiedMdFile()
-
-    </script>
+    <script src="./octokit.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
 </body>
 
 </html>

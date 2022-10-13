@@ -29,11 +29,11 @@ p,
 code,
 pre,
 kbd {
-    margin: 0 0 1.5em 0;
+    margin: 0;
 }
 
 blockquote {
-    margin: 0 1.5em 1.5em 1.5em;
+    margin: 0;
 }
 
 cite {
@@ -42,12 +42,12 @@ cite {
 
 li ul,
 li ol {
-    margin: 0 1.5em;
+    margin: 0;
 }
 
 ul,
 ol {
-    margin: 0 1.5em 1.5em 1.5em;
+    margin: 0;
 }
 
 ul li {
@@ -83,7 +83,7 @@ dd {
 }
 
 table {
-    margin-bottom: 1.4em;
+    margin-bottom: 0;
     width: 100%;
 }
 
@@ -94,7 +94,7 @@ th {
 th,
 td,
 caption {
-    padding: 4px 10px 4px 5px;
+    padding: 0;
 }
 
 tfoot {
@@ -112,7 +112,7 @@ acronym {
 }
 
 address {
-    margin: 0 0 1.5em;
+    margin: 0;
     font-style: italic;
 }
 
@@ -121,7 +121,7 @@ del {
 }
 
 pre {
-    margin: 1.5em 0;
+    margin: 0;
     white-space: pre;
 }
 
