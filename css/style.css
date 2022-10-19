@@ -1,35 +1,30 @@
 html {
     font-family: 'Poppins', sans-serif;
-    color: white;
+    color: black;
 }
 
 header {
     display: flex;
-    max-width: 1400px;
+    max-width: 1440px;
     justify-content: space-between;
     margin: 20px auto 0;
     align-items: center;
+    padding: 0 0 0 30px;
 }
 
 .directory-path {
-    display: flex;
     color: black;
-    width: 300px;
-    border-left: 1px white solid;
-    border-right: 1px white solid;
-    background-color: white;
-    gap: 20px;
-    flex-direction: column;
-    text-align: center;
-    border-radius: 10px;
-    height: 85px;
+
+}
+
+.search-header {
+    width: 150px;
 }
 
 .search-input {
-    width: 200px;
+    width: 100%;
     height: 35px;
-    border-radius: 8px;
-    border: none;
+    border: 1px solid black;
 }
 
 .search-input::placeholder {
@@ -43,9 +38,14 @@ a {
 
 }
 
+.switch-lang a {
+    color: black;
+    text-decoration: underline;
+}
+
 .project {
     display: flex;
-    width: 50%;
+    width: 700px;
     align-items: center;
     gap: 20px;
 }
@@ -55,21 +55,13 @@ a {
     color: black;
     padding: 5px;
     display: flex;
-    border: 1px white solid;
+    border: 1px black solid;
     border-radius: 10px;
     align-items: center;
     transition: all 0.3s;
 }
 
-/* .project-header:hover {
-    transform: scale(1.09);
-    cursor: pointer;
-} */
 
-.search-header {
-    width: 300px;
-
-}
 
 .project img {
 
@@ -77,9 +69,13 @@ a {
     width: 50px;
 }
 
+.switch-lang {
+    margin-right: 50px;
+}
+
 /* content section */
 .content {
-    max-width: 1400px;
+    width: 1400px;
     margin: 0 auto;
     display: flex;
 
@@ -92,42 +88,51 @@ a {
     align-items: center;
     width: 300px;
     min-height: 80vh;
-    border-left: 1px white solid;
-    border-right: 1px white solid;
+    border-left: 1px black solid;
+    border-right: 1px black solid;
 }
 
 .left-content-subfolder {
     padding-top: 10px;
     width: 80%;
-    color: white;
+    color: black;
     font-size: 17px;
 }
 
-.left-content-subfolder:hover {
+a.left-content-subfolder:hover {
     cursor: pointer;
     color: rgb(202, 198, 198);
 }
 
-#myVideo {
-    z-index: -1;
-    object-fit: cover;
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-}
 
 .left-content-suba {
     margin-top: 5px;
-    color: white;
+    color: black;
     position: relative;
     left: 20px;
 }
 
+.left-content-suba:hover {
+    cursor: pointer;
+
+}
+
 /*right-content*/
+.right-content {
+    width: 1000px;
+    margin: 20px auto;
+}
+
 .right-content img {
 
     width: 300px;
     height: 150px;
+}
+
+datalist {
+    list-style-type: none;
+}
+
+input::-webkit-calendar-picker-indicator {
+    opacity: 0;
 }

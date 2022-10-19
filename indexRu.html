@@ -16,12 +16,12 @@
 </head>
 
 <body>
-    <video autoplay loop muted id="myVideo" class="video" preload="true" playsinline="">
+    <!-- <video autoplay loop muted id="myVideo" class="video" preload="true" playsinline="">
         <source src="./img/backgroundVideo.mp4" type="video/mp4">
-    </video>
+    </video> -->
     <header>
         <div class="directory-path">
-            <h2>PROJECT NAME</h2>
+            <h2>{Logo}</h2>
         </div>
         <div class="project">
             <div class="project-header">
@@ -41,10 +41,10 @@
         <div class="search-header">
             <input type="text" placeholder="Search..." class="search-input">
         </div>
-        <div class="lang-header">
-            <p class="lang-choose">EN/RU</p>
+        <div class="switch-lang">
+            <a href="indexRu.html">RU</a>
+            <a href="indexEng.html">ENG</a>
         </div>
-
     </header>
     <div class="content">
         <div class="left-content">
@@ -56,8 +56,9 @@
     </div>
 
 
-    <script src="./octokit.js" type="module"></script>
+    <script src="./octokitRu.js" type="module"></script>
     <script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
+    <script src="utf8.js"></script>
 </body>
 
 </html>
