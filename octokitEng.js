@@ -1,4 +1,5 @@
 import { Octokit, App } from "https://cdn.skypack.dev/octokit?dts";
+import api_key from "./config.js";
 const mainDescription = document.getElementById('main-description');
 const wordAutoFillArrs = [];
 const wordAutoFillContent = [];
@@ -9,20 +10,21 @@ const intelligentInfoSubfolders = [];
 const bridgeArrs = [];
 const bridgeSubfolders = [];
 const projectHeader = Array.from(document.querySelectorAll('.project-header'));
-const linkToEngRepo = "/repos/pzn-apps/pzn-apps.github.io/contents/EN/"
-const linkToEngWordDocumentAutoFill = "/repos/pzn-apps/pzn-apps.github.io/contents/EN/word-document-auto-fill/"
+const linkToEngRepo = "/repos/pzn-apps/pzn-apps.github.io/contents/en/"
+const linkToEngWordDocumentAutoFill = "/repos/pzn-apps/pzn-apps.github.io/contents/en/word-document-auto-fill/"
 const endOfMdFile = "?ref=main";
 const octokit = new Octokit({
-    auth: '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'
+    auth: api_key,
 })
 
 async function getIntroMd() {
-    const introResponse = await octokit.request(`GET ${linkToEngRepo}intro.md${endOfMdFile}`, {
+    const introResponse = await octokit.request(`GET /repos/pzn-apps/pzn-apps.github.io/contents/intro.md${endOfMdFile}`, {
 
         owner: 'OWNER',
         repo: 'REPO'
 
     })
+    console.log(introResponse)
     let uncodedRepository = atob(introResponse.data.content)
     let fixedText = uncodedRepository.replaceAll("![[pzn-apps/img", "![alt text](https://github.com/pzn-apps/pzn-apps.github.io/blob/main/img")
     let endFixedText = fixedText.replaceAll("]]", "?raw=true)");

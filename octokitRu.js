@@ -1,4 +1,5 @@
 import { Octokit, App } from "https://cdn.skypack.dev/octokit?dts";
+import api_key from "./config.js";
 const mainDescription = document.getElementById('main-description');
 const dataAnalysisArrs = [];
 const dataAnalysisSubfolders = [];
@@ -10,7 +11,7 @@ const projectHeader = Array.from(document.querySelectorAll('.project-header'));
 
 const linkToRuRepo = "/repos/levpravstudio/poznyakovRU/contents/"
 const octokit = new Octokit({
-    auth: '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'
+    auth: api_key,
 })
 async function getIntroMd() {
     const introResponse = await octokit.request(`GET ${linkToRuRepo}интро.md?ref=main`, {
@@ -31,61 +32,8 @@ async function getIntroMd() {
 }
 getIntroMd()
 async function getFolders() {
-    const responseDataAnalysis = await octokit.request(`GET ${linkToRuRepo}1%20Проект`, {
 
-        owner: 'OWNER',
-        repo: 'REPO'
 
-    })
-    for (let i = 0; i < responseDataAnalysis.data.length; i++) {
-        dataAnalysisArrs.push(responseDataAnalysis.data[i].name.replace(/.md/, ''));
-    }
-    const responseNestedDataAnalysis = await octokit.request(`GET ${linkToRuRepo}1%20Проект/1%20Вложенный`, {
-
-        owner: 'OWNER',
-        repo: 'REPO'
-
-    })
-    for (let i = 0; i < responseDataAnalysis.data.length; i++) {
-        dataAnalysisSubfolders.push(responseNestedDataAnalysis.data[i].name.replace(/.md/, ''));
-    }
-    const responseIntelligent = await octokit.request(`GET ${linkToRuRepo}2%20Проект`, {
-
-        owner: 'OWNER',
-        repo: 'REPO'
-
-    })
-    for (let i = 0; i < responseIntelligent.data.length; i++) {
-        intelligentInfoArrs.push(responseIntelligent.data[i].name.replace(/.md/, ''));
-    }
-    const responseIntelligentSubfolders = await octokit.request(`GET ${linkToRuRepo}2%20Проект/2%20Вложенный`, {
-
-        owner: 'OWNER',
-        repo: 'REPO'
-
-    })
-    for (let i = 0; i < responseIntelligentSubfolders.data.length; i++) {
-        intelligentInfoSubfolders.push(responseIntelligentSubfolders.data[i].name.replace(/.md/, ''));
-    }
-    const responseBridge = await octokit.request(`GET ${linkToRuRepo}3%20Проект`, {
-
-        owner: 'OWNER',
-        repo: 'REPO'
-
-    })
-
-    for (let i = 0; i < responseBridge.data.length; i++) {
-        bridgeArrs.push(responseBridge.data[i].name.replace(/.md/, ''));
-    }
-    const responseBridgeSubfolders = await octokit.request(`GET ${linkToRuRepo}3%20Проект/3%20Вложенный`, {
-
-        owner: 'OWNER',
-        repo: 'REPO'
-
-    })
-    for (let i = 0; i < responseBridgeSubfolders.data.length; i++) {
-        bridgeSubfolders.push(responseBridgeSubfolders.data[i].name.replace(/.md/, ''));
-    }
 }
 getFolders()
 
