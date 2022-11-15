@@ -1,15 +1,16 @@
+require("dotenv").config();
 const { Octokit } = require('octokit')
 const expressHandleBars = require('express-handlebars');
-const api_key = "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";
 const linkToEngRepo = "/repos/pzn-apps/pzn-apps.github.io/contents/en/"
 const linkToEngWordDocumentAutoFill = "/repos/pzn-apps/pzn-apps.github.io/contents/en/word-document-auto-fill/"
 const endOfMdFile = "?ref=main";
 const express = require('express');
+const { link } = require('fs');
 const app = express();
 const arrRender = []
 const routeRender = []
 const octokit = new Octokit({
-    auth: api_key,
+    auth: process.env.API_KEY,
 })
 
 const wordAutoFillContent = [];
@@ -22,7 +23,7 @@ async function getIntroMd() {
 
     })
 
-    addToWordArr(introResponse, introMdArray)
+    addToWordArr(introResponse, introMdArray, 0)
 }
 getIntroMd()
 
@@ -32,7 +33,10 @@ const addToWordArr = (response, array, index) => {
     // [[pzn-apps/en/word-document-auto-fill/1. Installation|1. Installation?raw=true) 
     //[1.Installation](./1.Installation)
     let uncodedRepository = atob(response.data.content)
-    let fixedText = uncodedRepository.replaceAll("![[pzn-apps/img", "![alt text](https://github.com/pzn-apps/pzn-apps.github.io/blob/main/img")
+    let startOfLink = uncodedRepository.replaceAll(/\[\[pzn-apps\/en\/.*\//g, '(./')
+    let endOfLink = startOfLink.replaceAll(/\|.*/g, ')');
+    let removeInt = endOfLink.replaceAll(/\d.\s/g, '')
+    let fixedText = removeInt.replaceAll("![[pzn-apps/img", "![alt text](https://github.com/pzn-apps/pzn-apps.github.io/blob/main/views/img")
     let endFixedText = fixedText.replaceAll("]]", "?raw=true)");
     let showdown = require('showdown'),
         converter = new showdown.Converter(),
@@ -70,9 +74,7 @@ const getContent = async (projectName, item, length) => {
         arr = addToWordArr(responseData, wordAutoFillContent, index)
 
     }
-    // console.log(String(arr[0].split('').splice(0, 30)))
     for (let i = 0; i < length; i++) {
-        // console.log(String(arr[i]).split('').splice(0, 70).join(''))
         app.get(`/${routeRender[i]}`, (req, res) => {
 
             res.render('layouts/main', { right_content: arr[i], left_content: arrRender.join('').split(',') })
@@ -92,7 +94,7 @@ app.engine('hbs', handlebars.engine)
 app.set('view engine', 'hbs')
 
 app.get('/', (req, res) => {
-    res.render('layouts/main', { right_content: introMdArray[0] })
+    res.render('layouts/main', { right_content: introMdArray })
 })
 
 

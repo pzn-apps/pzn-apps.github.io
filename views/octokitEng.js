@@ -1,5 +1,5 @@
 import { Octokit, App } from "https://cdn.skypack.dev/octokit?dts";
-const api_key = "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";
+const api_key = config.API_KEY;
 const mainDescription = document.getElementById('main-description');
 const leftContent = document.querySelector(".left-content");
 const wordAutoFillFolders = [];

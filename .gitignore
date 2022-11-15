@@ -7,7 +7,7 @@
 #user files
 
 config.js
-
+.env
 # User-specific files
 *.rsuser
 *.suo
