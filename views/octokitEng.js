@@ -16,7 +16,7 @@ const linkToEngRepo = "/repos/pzn-apps/pzn-apps.github.io/contents/en/"
 const linkToEngWordDocumentAutoFill = "/repos/pzn-apps/pzn-apps.github.io/contents/en/word-document-auto-fill/"
 const endOfMdFile = "?ref=main";
 const octokit = new Octokit({
-    auth: api_key,
+    auth: "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",
 })
 
 

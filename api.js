@@ -5,12 +5,11 @@ const linkToEngRepo = "/repos/pzn-apps/pzn-apps.github.io/contents/en/"
 const linkToEngWordDocumentAutoFill = "/repos/pzn-apps/pzn-apps.github.io/contents/en/word-document-auto-fill/"
 const endOfMdFile = "?ref=main";
 const express = require('express');
-const { link } = require('fs');
 const app = express();
 const arrRender = []
 const routeRender = []
 const octokit = new Octokit({
-    auth: process.env.API_KEY,
+    auth: "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",
 })
 
 const wordAutoFillContent = [];
