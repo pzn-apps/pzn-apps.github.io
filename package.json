@@ -23,13 +23,13 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-handlebars": "^6.0.6",
-    "nodemon": "^2.0.20",
     "octokit": "^2.0.10",
     "on-finished": "^2.4.1",
     "showdown": "^2.1.0"
   },
   "devDependencies": {
-    "@types/showdown": "^2.0.0"
+    "@types/showdown": "^2.0.0",
+    "nodemon": "^2.0.20"
   },
   "description": ""
 }

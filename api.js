@@ -9,7 +9,7 @@ const app = express();
 const arrRender = []
 const routeRender = []
 const octokit = new Octokit({
-    auth: "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",
+    auth: process.env.API_KEY,
 })
 
 const wordAutoFillContent = [];
@@ -26,16 +26,12 @@ async function getIntroMd() {
 }
 getIntroMd()
 
-
+console.log(Math.clz32(1))
 const addToWordArr = (response, array, index) => {
-    //[Link text Here](https://link-url-here.org)
-    // [[pzn-apps/en/word-document-auto-fill/1. Installation|1. Installation?raw=true) 
-    //[1.Installation](./1.Installation)
+
     let uncodedRepository = atob(response.data.content)
-    let startOfLink = uncodedRepository.replaceAll(/\[\[pzn-apps\/en\/.*\//g, '(./')
-    let endOfLink = startOfLink.replaceAll(/\|.*/g, ')');
-    let removeInt = endOfLink.replaceAll(/\d.\s/g, '')
-    let fixedText = removeInt.replaceAll("![[pzn-apps/img", "![alt text](https://github.com/pzn-apps/pzn-apps.github.io/blob/main/views/img")
+    let removeLinks = uncodedRepository.replace(/\%20/g, '').replace(/\.md/g, '')
+    let fixedText = removeLinks.replaceAll("![[pzn-apps/img", "![alt text](https://github.com/pzn-apps/pzn-apps.github.io/blob/main/views/img")
     let endFixedText = fixedText.replaceAll("]]", "?raw=true)");
     let showdown = require('showdown'),
         converter = new showdown.Converter(),
@@ -45,10 +41,7 @@ const addToWordArr = (response, array, index) => {
     array[index] = html;
     return array
 }
-
 const wordArray = [];
-
-
 const enProjects = [];
 const getEnProjects = async () => {
     const response = await octokit.request(`GET ${linkToEngRepo}`, {
