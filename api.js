@@ -1,8 +1,8 @@
 require("dotenv").config();
 const { Octokit } = require('octokit')
 const expressHandleBars = require('express-handlebars');
-const linkToEngRepo = "/repos/pzn-apps/pzn-apps.github.io/contents/en/"
-const linkToEngWordDocumentAutoFill = "/repos/pzn-apps/pzn-apps.github.io/contents/en/word-document-auto-fill/"
+const linkToEngRepo = "/repos/pzn-apps/pzn-apps-content/contents/en/"
+const linkToEngWordDocumentAutoFill = "/repos/pzn-apps/pzn-apps-content/contents/en/word-document-auto-fill/"
 const endOfMdFile = "?ref=main";
 const express = require('express');
 const app = express();
@@ -31,7 +31,8 @@ const addToWordArr = (response, array, index) => {
 
     let uncodedRepository = atob(response.data.content)
     let removeLinks = uncodedRepository.replace(/\%20/g, '').replace(/\.md/g, '')
-    let fixedText = removeLinks.replaceAll("![[pzn-apps/img", "![alt text](https://github.com/pzn-apps/pzn-apps.github.io/blob/main/views/img")
+    //change link to img
+    let fixedText = removeLinks.replaceAll("![[pzn-apps/img", `![alt text](https://github.com/pzn-apps/pzn-apps-content/blob/main/views/img`)
     let endFixedText = fixedText.replaceAll("]]", "?raw=true)");
     let showdown = require('showdown'),
         converter = new showdown.Converter(),

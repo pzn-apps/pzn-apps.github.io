@@ -13,8 +13,8 @@ const bridgeArrs = [];
 const bridgeSubfolders = [];
 
 const projectHeader = Array.from(document.querySelectorAll('.project-header'));
-const linkToEngRepo = "/repos/pzn-apps/pzn-apps.github.io/contents/en/"
-const linkToEngWordDocumentAutoFill = "/repos/pzn-apps/pzn-apps.github.io/contents/en/word-document-auto-fill/"
+const linkToEngRepo = "/repos/pzn-apps/pzn-apps-content/contents/en/"
+const linkToEngWordDocumentAutoFill = "/repos/pzn-apps/pzn-apps-content/contents/en/word-document-auto-fill/"
 const endOfMdFile = "?ref=main";
 const octokit = new Octokit({
     auth: api_key,
@@ -39,6 +39,7 @@ const introMdArray = [];
 const addToWordArr = (response, array) => {
     //[Link text Here](https://link-url-here.org)
     let uncodedRepository = atob(response.data.content)
+    //change link
     let fixedText = uncodedRepository.replaceAll("![[pzn-apps/img", "![alt text](https://github.com/pzn-apps/pzn-apps.github.io/blob/main/img")
     let endFixedText = fixedText.replaceAll("]]", "?raw=true)");
     var converter = new showdown.Converter(),
